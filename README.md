@@ -9,6 +9,28 @@ Home Assistant custom integration to monitor the availability and status of publ
 > - Please [report issues](https://github.com/pschmucker/vdl-parkings/issues) with logs and details.
 
 
+## Table of contents
+
+  - [Features](#features)
+  - [Requirements](#requirements)
+  - [Installation](#installation)
+    - [HACS (recommended)](#hacs-recommended)
+    - [Manual installation](#manual-installation)
+  - [Configuration](#configuration)
+  - [Provided entities](#provided-entities)
+    - [Sensor entities](#sensor-entities)
+    - [Binary sensor entities](#binary-sensor-entities)
+    - [Zone entities](#zone-entities)
+  - [Example usage](#example-usage)
+    - [Simple Lovelace card](#simple-lovelace-card)
+    - [Conditional notification when a parking has space](#conditional-notification-when-a-parking-has-space)
+    - [Map view with zones](#map-view-with-zones)
+  - [Screenshots](#screenshots)
+  - [FAQ](#faq)
+  - [Troubleshooting](#troubleshooting)
+  - [Development and contributions](#development-and-contributions)
+
+
 ## Features
 
 - Cloud polling of the public VDL parking data (no account or API key required, only Internet access).
@@ -79,7 +101,6 @@ For each selected parking, the integration creates multiple entities. The exact 
 | `ParkingAvailableSpaces`  | `sensor.<parking_name>_available_spaces`      | Current number of free spaces.               |
 | `ParkingOccupiedSpaces`   | `sensor.<parking_name>_occupied_spaces`       | Current number of occupied spaces.           |
 | `ParkingOccupancyRate`    | `sensor.<parking_name>_occupancy_rate`        | Percentage of occupied spaces. |
-
 
 ### Binary sensor entities
 
