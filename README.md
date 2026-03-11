@@ -59,6 +59,10 @@ Home Assistant custom integration to monitor the availability and status of publ
 
 ### HACS (recommended)
 
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=pschmucker&repository=vdl-parkings&category=integration)
+
+Or:
+
 1. In Home Assistant, go to **HACS → Integrations → Custom repositories**.
 2. Add this repository URL `https://github.com/pschmucker/vdl-parkings` as type **Integration**.
 3. Search for **VDL Parkings** in HACS and install it.
