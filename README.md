@@ -1,9 +1,9 @@
 # VDL Parkings – Home Assistant Custom Integration
 
-Home Assistant custom integration to monitor the availability and status of public parkings in Luxembourg city (VDL - Ville De Luxembourg) using the public data from [vdl.lu](https://vdl.lu) website.
+Home Assistant custom integration to monitor the availability and status of public parkings in Luxembourg city (VDL - Ville De Luxembourg) using the public data from [vdl.lu](https://www.vdl.lu/fr/se-deplacer/en-voiture/parkings-et-pr) website.
 
 > [!WARNING]
-> 🚧 **Beta** – this integration is under active development 🚧
+> **Alpha version** – This integration is under active development 🚧
 > - Features and entities may change between releases.
 > - Use at your own risk and keep regular backups of your Home Assistant configuration.
 > - Please [report issues](https://github.com/pschmucker/vdl-parkings/issues) with logs and details.
@@ -52,7 +52,6 @@ Home Assistant custom integration to monitor the availability and status of publ
 
 - Home Assistant Core **2026.3.0** or newer.  
 - Working Internet connection to reach the VDL public parking API (cloud polling, `iot_class: cloud_polling`).  
-- No external Python library dependencies (empty `requirements` in `manifest.json`).
 
 
 ## Installation
@@ -63,7 +62,7 @@ Home Assistant custom integration to monitor the availability and status of publ
 
 Or:
 
-1. In Home Assistant, go to **HACS → Integrations → Custom repositories**.
+1. In Home Assistant, go to **HACS → Custom repositories**.
 2. Add this repository URL `https://github.com/pschmucker/vdl-parkings` as type **Integration**.
 3. Search for **VDL Parkings** in HACS and install it.
 4. Restart Home Assistant.
@@ -88,9 +87,8 @@ The integration is configured entirely from the UI via a **config flow**.
 3. Follow the onboarding steps to:
    - Select which parkings you want to monitor
    - Optionally assign areas to selected parkings
-   - Validate
 
-At the moment there is no advanced options exposed in the Options flow.
+At the moment there is no advanced options exposed in the configuration flow.
 
 
 ## Provided entities
@@ -146,16 +144,16 @@ entities:
 
 ```yaml
 alias: Notify when parking has space
-trigger:
-  - platform: numeric_state
+triggers:
+  - trigger: numeric_state
     entity_id: sensor.royal_hamilius_available_spaces
     above: 10
-condition:
+conditions:
   - condition: state
     entity_id: binary_sensor.royal_hamilius_open
     state: "on"
-action:
-  - service: notify.mobile_app_my_phone
+actions:
+  - action: notify.mobile_app_my_phone
     data:
       message: "Royal Hamilius has more than 10 free parking spaces."
 mode: single
@@ -184,7 +182,7 @@ Once zones are created for each parking, you can add the standard **Map** card i
 ## FAQ
 
 **Does this integration require an account or API key?**
-No. It uses the public JSON API provided by vdl.lu for parking information, so no credentials are required.
+No. It uses the public data provided by vdl.lu for parking information, so no credentials are required.
 
 **How often is data updated?**
 The integration uses cloud polling at a fixed interval of 60 seconds. The effective refresh rate is limited by both the integration and the VDL API update frequency.
