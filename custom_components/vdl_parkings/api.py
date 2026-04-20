@@ -28,4 +28,16 @@ class VdlParkingApi:
 
                 response.raise_for_status()
 
+                # Validate content-type before JSON parsing
+                if "application/json" not in content_type:
+                    _LOGGER.warning(
+                        "Unexpected content-type from API: %s. Response preview: %s",
+                        content_type,
+                        text[:200],
+                    )
+                    raise ValueError(
+                        f"Unexpected content-type: {content_type}. "
+                        "Expected application/json."
+                    )
+
                 return await response.json()
