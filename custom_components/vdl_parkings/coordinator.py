@@ -28,7 +28,12 @@ class VdlParkingCoordinator(DataUpdateCoordinator):
         )
 
     async def _async_update_data(self):
-        data = await self.api.fetch()
+        try:
+            data = await self.api.fetch()
+        except ValueError as err:
+            # Transient error: log it but allow coordinator to keep last-known-good data
+            _LOGGER.warning("Ignoring failed API call: %s", err)
+            raise
 
         parkings = {}
 
