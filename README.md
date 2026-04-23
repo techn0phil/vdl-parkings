@@ -6,7 +6,7 @@ Home Assistant custom integration to monitor the availability and status of publ
 > **Alpha version** – This integration is under active development 🚧
 > - Features and entities may change between releases.
 > - Use at your own risk and keep regular backups of your Home Assistant configuration.
-> - Please [report issues](https://github.com/pschmucker/vdl-parkings/issues) with logs and details.
+> - Please [report issues](https://github.com/techn0phil/vdl-parkings/issues) with logs and details.
 
 
 ## Table of contents
@@ -58,12 +58,12 @@ Home Assistant custom integration to monitor the availability and status of publ
 
 ### HACS (recommended)
 
-[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=pschmucker&repository=vdl-parkings&category=integration)
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=techn0phil&repository=vdl-parkings&category=integration)
 
 Or:
 
 1. In Home Assistant, go to **HACS → Custom repositories**.
-2. Add this repository URL `https://github.com/pschmucker/vdl-parkings` as type **Integration**.
+2. Add this repository URL `https://github.com/techn0phil/vdl-parkings` as type **Integration**.
 3. Search for **VDL Parkings** in HACS and install it.
 4. Restart Home Assistant.
 5. Add the integration from **Settings → Devices & Services → Add integration → VDL Parkings**.
@@ -218,4 +218,4 @@ No. It is UI-only and uses the recommended `config_flow` for setup.
 
 ## Development and contributions
 
-Contributions, bug reports and feature requests are welcome via the [GitHub issue tracker](https://github.com/pschmucker/vdl-parkings/issues). Please include Home Assistant version, integration version, logs and clear reproduction steps when reporting bugs.
+Contributions, bug reports and feature requests are welcome via the [GitHub issue tracker](https://github.com/techn0phil/vdl-parkings/issues). Please include Home Assistant version, integration version, logs and clear reproduction steps when reporting bugs.
