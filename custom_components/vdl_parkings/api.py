@@ -20,11 +20,8 @@ class VdlParkingApi:
 
             async with session.get(API_URL) as response:
 
-                # Print status code, content type, and response text for debugging
                 content_type = response.headers.get("Content-Type", "")
                 text = await response.text()
-
-                _LOGGER.debug("Response: %s; %s; %s", response.status, content_type, text[:500])
 
                 response.raise_for_status()
 
@@ -39,5 +36,7 @@ class VdlParkingApi:
                         f"Unexpected content-type: {content_type}. "
                         "Expected application/json."
                     )
+
+                _LOGGER.debug("Response: %s; %s; %s...", response.status, content_type, text[:500])
 
                 return await response.json()

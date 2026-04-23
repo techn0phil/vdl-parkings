@@ -1,5 +1,7 @@
 """Config flow for VDL Parkings integration."""
 
+import logging
+
 from homeassistant import config_entries
 from homeassistant.helpers import config_validation as cv
 
@@ -7,6 +9,9 @@ import voluptuous as vol
 
 from .api import VdlParkingApi
 from .const import DOMAIN, CONF_PARKINGS
+
+
+_LOGGER = logging.getLogger(__name__)
 
 
 class VdlParkingConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
@@ -25,8 +30,12 @@ class VdlParkingConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         parkings = data["parking"]
 
         # mapping title -> id
-        id_map = {p["title"]: str(p["id"]) for p in parkings}
+        id_map = {
+            p["title"]: str(p["id"])
+            for p in parkings
+        }
 
+        # sorted mapping title -> title
         parking_map = {
             p["title"]: p["title"]
             for p in sorted(parkings, key=lambda p: p["title"].casefold())
@@ -34,6 +43,12 @@ class VdlParkingConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
         if user_input is not None:
             selected_ids = [id_map[name] for name in user_input[CONF_PARKINGS]]
+            _LOGGER.info(
+                "Selected %s parkings: %s (ids: %s)",
+                len(selected_ids),
+                user_input[CONF_PARKINGS],
+                selected_ids
+            )
 
             return self.async_create_entry(
                 title="Parkings",

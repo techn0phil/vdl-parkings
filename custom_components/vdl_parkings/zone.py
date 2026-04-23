@@ -1,8 +1,13 @@
 """Support for VDL Parkings zones."""
 
+import logging
+
 from homeassistant.components.zone import ZoneStorageCollection
 
 from .const import CONF_PARKINGS, DOMAIN
+
+
+_LOGGER = logging.getLogger(__name__)
 
 
 async def create_parking_zones(hass, coordinator, entry):
@@ -35,6 +40,8 @@ async def create_parking_zones(hass, coordinator, entry):
 
         zones.append(zone["id"])
 
+    _LOGGER.debug("Created %d zones for entry %s: %s", len(zones), entry.entry_id, zones)
+
     hass.data[DOMAIN].setdefault("zones", {})
     hass.data[DOMAIN]["zones"][entry.entry_id] = zones
 
@@ -47,3 +54,5 @@ async def remove_parking_zones(hass, entry):
 
     for entity_id in zones:
         await zone_collection.async_delete_item(entity_id)
+
+    _LOGGER.debug("Removed %d zones for entry %s: %s", len(zones), entry.entry_id, zones)
