@@ -3,7 +3,7 @@
 Home Assistant custom integration to monitor the availability and status of public parkings in Luxembourg city (VDL - Ville De Luxembourg) using the public data from [vdl.lu](https://www.vdl.lu/fr/se-deplacer/en-voiture/parkings-et-pr) website.
 
 > [!WARNING]
-> **Alpha version** – This integration is under active development 🚧
+> **Beta version** – This integration is in testing phase 🚧
 > - Features and entities may change between releases.
 > - Use at your own risk and keep regular backups of your Home Assistant configuration.
 > - Please [report issues](https://github.com/techn0phil/vdl-parkings/issues) with logs and details.
@@ -34,7 +34,7 @@ Home Assistant custom integration to monitor the availability and status of publ
 ## Features
 
 - Cloud polling of the public VDL parking data (no account or API key required, only Internet access).
-- One set of entities per parking:
+- Provides sets of entities per parking:
     - `sensor` entities:
         - Total capacity
         - Available spaces
